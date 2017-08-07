@@ -28,5 +28,6 @@ const doctorSchema = new Schema ({
   }
 });
 
-export default doctorSchema;
+const Doctor = mongoose.model('Doctor', doctorSchema);
+export default Doctor;
 
