@@ -20,9 +20,22 @@ doctorCtrl.post = (req, res) => {
   });
 
   doctor.save().then((newDoctor) => {
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: newDoctor
+    });
+  }).catch((err) => {
+    res.status(500).json({
+      message: err 
+    }); 
+  });
+};
+
+doctorCtrl.getAll = (req, res) => {
+  db.Doctor.find({}).then((doctors) => {
+    return res.status(200).json({
+      success: true,
+      data: doctors
     });
   }).catch((err) => {
     res.status(500).json({

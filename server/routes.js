@@ -5,7 +5,6 @@ import doctorCtrl from './controllers/doctorCtrl';
 
 // Doctor routes
 routes.post('/doctors/add', doctorCtrl.post);
-//route.get('/doctors', doctorCtrl.getAll);
-//route.get('/doctors/:id', doctorCtrl.get);
+routes.get('/doctors', doctorCtrl.getAll);
 
 export default routes;
