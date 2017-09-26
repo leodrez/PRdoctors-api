@@ -27,6 +27,10 @@ const doctorSchema = new Schema ({
   address: {
     type: String,
     required: true
+  },
+  createdAt: {
+    type: Date,
+    required: true
   }
 });
 
