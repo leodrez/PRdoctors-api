@@ -67,10 +67,10 @@ doctorCtrl.getDoctorById = (req, res) => {
 
 doctorCtrl.updateDoctor = (req, res) => {
 
-  let doctorId = req.params.id; 
+  let doctorId = req.params.doctorId; 
   let newData = req.body;
 
-  db.Doctor.findByIdAndUpdate({ doctorId, newData })
+  db.Doctor.findByIdAndUpdate(doctorId, newData)
     .then((doctor) => {
       return res.status(200).json({
         success: true,
