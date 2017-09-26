@@ -83,4 +83,22 @@ doctorCtrl.updateDoctor = (req, res) => {
       });
     });
 };
+
+doctorCtrl.deleteDoctor = (req, res) => {
+  
+  let doctorId = req.params.doctorId;
+
+  db.Doctor.findByIdAndRemove(doctorId)
+    .then((doctor) => {
+      return res.status(200).json({
+        success: true,
+        data: doctor
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err 
+      });
+    });
+};
 export default doctorCtrl;

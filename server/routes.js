@@ -8,6 +8,6 @@ routes.post('/doctors/new', doctorCtrl.newDoctor);
 routes.get('/doctors', doctorCtrl.getAllDoctors);
 routes.get('/doctors/:doctorId', doctorCtrl.getDoctorById);
 routes.put('/doctors/update/:doctorId', doctorCtrl.updateDoctor);
-// routes.delete('/doctors/delete/:id', doctorCtrl.delete);
+routes.delete('/doctors/delete/:doctorId', doctorCtrl.deleteDoctor);
 
 export default routes;
