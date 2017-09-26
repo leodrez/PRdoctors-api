@@ -4,7 +4,8 @@ const doctorCtrl = {};
 
 doctorCtrl.post = (req, res) => {
   const {
-    name,
+    firstName,
+    lastName,
     speciality,
     treatments,
     phone,
@@ -12,7 +13,8 @@ doctorCtrl.post = (req, res) => {
   } = req.body;
 
   const doctor = new db.Doctor({
-    name,
+    firstName,
+    lastName,
     speciality,
     treatments,
     phone,
