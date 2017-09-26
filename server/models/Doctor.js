@@ -11,12 +11,10 @@ const doctorSchema = new Schema ({
     type: String,
     required: true
   },
-  speciality: [
-    {
-      type: String,
-      required: true
-    }
-  ],
+  speciality: {
+    type: Array,
+    required: true
+  },
   treatments: [
     {
       type: String 

@@ -2,7 +2,7 @@ import db from '../models/index';
 
 const doctorCtrl = {};
 
-doctorCtrl.post = (req, res) => {
+doctorCtrl.newDoctor = (req, res) => {
   const {
     firstName,
     lastName,
@@ -33,7 +33,7 @@ doctorCtrl.post = (req, res) => {
   });
 };
 
-doctorCtrl.getAll = (req, res) => {
+doctorCtrl.getAllDoctors = (req, res) => {
   db.Doctor.find({}).then((doctors) => {
     return res.status(200).json({
       success: true,
@@ -44,6 +44,24 @@ doctorCtrl.getAll = (req, res) => {
       message: err 
     }); 
   });
+};
+
+doctorCtrl.getDoctorById = (req, res) => {
+
+  let doctorId = req.params.id;
+
+  db.Doctor.find({ _id: doctorId })
+    .then((docs) => {
+      return res.status(200).json({
+        success: true,
+        data: docs
+      }); 
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err 
+      });
+    });
 };
 
 export default doctorCtrl;
