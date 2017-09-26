@@ -10,7 +10,7 @@ doctorCtrl.newDoctor = (req, res) => {
     treatments,
     phone,
     address,
-    createdAt = Date.now()
+    _createdAt = Date.now()
   } = req.body;
 
   const doctor = new db.Doctor({
@@ -20,7 +20,7 @@ doctorCtrl.newDoctor = (req, res) => {
     treatments,
     phone,
     address,
-    createdAt
+    _createdAt
   });
 
   doctor.save().then((newDoctor) => {

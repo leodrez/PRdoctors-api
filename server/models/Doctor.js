@@ -15,11 +15,9 @@ const doctorSchema = new Schema ({
     type: Array,
     required: true
   },
-  treatments: [
-    {
-      type: String 
-    } 
-  ],
+  treatments: {
+    type: Array 
+  }, 
   phone: {
     type: Number,
     required: true
@@ -28,9 +26,14 @@ const doctorSchema = new Schema ({
     type: String,
     required: true
   },
-  createdAt: {
+  _createdAt: {
     type: Date,
     required: true
+  },
+  _isDeleted: {
+    type: Boolean,
+    required: true,
+    default: false
   }
 });
 
