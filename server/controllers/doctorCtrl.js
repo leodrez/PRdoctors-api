@@ -104,8 +104,7 @@ doctorCtrl.deleteDoctor = (req, res) => {
     });
 };
 
-/*
-doctorCtrl.deleteDoctor = (req, res) => {
+doctorCtrl.destroyDoctor = (req, res) => {
   
   let doctorId = req.params.doctorId;
 
@@ -114,14 +113,14 @@ doctorCtrl.deleteDoctor = (req, res) => {
       return res.status(200).json({
         success: true,
         data: doctor
-      });
+      }); 
     })
     .catch((err) => {
       res.status(500).json({
         message: err 
-      });
+      }); 
     });
 };
-*/
+
 
 export default doctorCtrl;
