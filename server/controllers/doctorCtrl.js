@@ -3,6 +3,7 @@ import db from '../models/index';
 const doctorCtrl = {};
 
 doctorCtrl.newDoctor = (req, res) => {
+
   const {
     firstName,
     lastName,
@@ -23,29 +24,52 @@ doctorCtrl.newDoctor = (req, res) => {
     _createdAt
   });
 
-  doctor.save().then((newDoctor) => {
-    return res.status(200).json({
-      success: true,
-      data: newDoctor
+  doctor.save()
+    .then((newDoctor) => {
+      return res.status(200).json({
+        success: true,
+        data: newDoctor
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err 
+      }); 
     });
-  }).catch((err) => {
-    res.status(500).json({
-      message: err 
-    }); 
-  });
+
+};
+
+doctorCtrl.getDoctors = (req, res) => {
+
+  db.Doctor.find({ _isDeleted: false })
+    .then((doctors) => {
+      return res.status(200).json({
+        success: true,
+        data: doctors
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err 
+      });
+    });
+
 };
 
 doctorCtrl.getAllDoctors = (req, res) => {
-  db.Doctor.find({}).then((doctors) => {
-    return res.status(200).json({
-      success: true,
-      data: doctors
+
+  db.Doctor.find()
+    .then((doctors) => {
+      return res.status(200).json({
+        success: true,
+        data: doctors
+      });
+    }).catch((err) => {
+      res.status(500).json({
+        message: err 
+      }); 
     });
-  }).catch((err) => {
-    res.status(500).json({
-      message: err 
-    }); 
-  });
+
 };
 
 doctorCtrl.getDoctorById = (req, res) => {
@@ -64,6 +88,7 @@ doctorCtrl.getDoctorById = (req, res) => {
         message: err 
       });
     });
+
 };
 
 
@@ -84,6 +109,7 @@ doctorCtrl.updateDoctor = (req, res) => {
         message: err 
       });
     });
+
 };
 
 doctorCtrl.deleteDoctor = (req, res) => {
@@ -102,6 +128,7 @@ doctorCtrl.deleteDoctor = (req, res) => {
         message: err 
       }); 
     });
+
 };
 
 doctorCtrl.destroyDoctor = (req, res) => {
@@ -120,6 +147,7 @@ doctorCtrl.destroyDoctor = (req, res) => {
         message: err 
       }); 
     });
+
 };
 
 
